@@ -10,7 +10,10 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import torch
 import pandas as pd
+from countcoins.data.dataset import get_transforms
 import time
+from countcoins.data.IO import read_image
+import pickle
 
 
 def number_of_parameters(model):
@@ -149,3 +152,28 @@ def train(model, epochs, optimizer, criterion, additional_criterion, train_loade
     df_training_info = pd.DataFrame(training_info_list)
 
     return model, df_training_info
+
+
+class TrainedDeepLearningModel():
+
+    def __init__(self, models_path, experiment_name):
+        experiment_folder = os.path.join(models_path, experiment_name)
+        with open(os.path.join(experiment_folder, 'params.pkl'), 'rb') as f:
+            params = pickle.load(f)
+
+        self.model = CoinCounterCNN(reduce_factor=params['model_reduce_factor'], image_size=params['image_size'])
+        self.model.load_state_dict(torch.load(os.path.join(experiment_folder, 'model_state_dict.pth'), weights_only=True))
+        self.model.eval()
+
+        self.transform = get_transforms(image_size=params['image_size'], mode='inference')
+
+    def predict(self, image_path):
+        image = read_image(image_path, as_gray=True, as_PIL=True, plot_image=False,)  # shape: (H, W)
+        image = self.transform(image)
+        image = image.unsqueeze(0)  # torch.Size([1, 1, H, W])
+
+        with torch.no_grad():
+            y = self.model(image)
+            y = y.item()
+
+        return y

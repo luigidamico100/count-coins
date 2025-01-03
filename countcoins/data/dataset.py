@@ -60,3 +60,4 @@ class CoinDataset(Dataset):
         target = torch.tensor(self.df_annotations['coins_count'].iloc[idx], dtype=torch.float32)
 
         return image, target
+    

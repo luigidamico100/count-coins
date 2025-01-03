@@ -4,6 +4,7 @@ from skimage.feature import canny
 from scipy.ndimage import binary_fill_holes
 from skimage.segmentation import clear_border
 import numpy as np
+from countcoins.data.IO import read_image
 
 
 class ClassicalCVModel():
@@ -12,7 +13,9 @@ class ClassicalCVModel():
         pass
 
 
-    def predict(self, image, generate_plots=False):
+    def predict(self, image_path, generate_plots=False):
+
+        image = read_image(image_path, as_gray=False, as_PIL=False, plot_image=False)
 
         gray_image = color.rgb2gray(image)
 
@@ -54,5 +57,7 @@ class ClassicalCVModel():
             axs[5].imshow(cleaned_image, cmap='gray')
             axs[5].set_title('Remove small objects (noise)')
             axs[5].axis('off')
+            # fig.suptitle(f'Algorithm processing. Predicted coins count: {num_coins}')
+            plt.tight_layout()
 
         return num_coins

@@ -30,3 +30,25 @@ def visualize_training_info(df_training_info, plt_close=True):
     if plt_close:
         plt.close()
     return fig
+
+
+def visualize_metrics(df_metrics, plt_close=True):
+    sns.set_theme()
+
+    if df_metrics['set'].nunique() == 2:
+        fig, axs = plt.subplots(2, 1, figsize=(10, 10), sharey=True)
+        axs[0].set_title('Metrics on train set')
+        axs[1].set_title('Metrics on test set')
+        sns.barplot(df_metrics.query("set=='train'"), x='currency', y='value', hue='metric', ax=axs[0])
+        sns.barplot(df_metrics.query("set=='test'"), x='currency', y='value', hue='metric', ax=axs[1])
+    else:
+        fig, ax = plt.subplots(1, 1, figsize=(10, 5), sharey=True)
+        ax.set_title('Metrics on test set')
+        sns.barplot(df_metrics.query("set=='test'"), x='currency', y='value', hue='metric', ax=ax)
+
+    plt.style.use('default')
+    plt.tight_layout()
+
+    if plt_close:
+        plt.close()
+    return fig
