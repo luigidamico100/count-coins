@@ -3,16 +3,17 @@
 This is a little project made for the aulab classes.
 
 
-## Description
-The aim of the project is to show project data science project structure folders for a common data science project taken from [Cookiecutter](https://github.com/drivendataorg/cookiecutter-data-science). 
+## Description  
+This project aims to demonstrate the folder structure for a typical data science project, following the framework provided by [Cookiecutter](https://github.com/drivendataorg/cookiecutter-data-science).  
 
-Beside this, the project is about Computer vision, specifically the task is to count the number of coins present in images. The dataset is the [Count Coins Image dataset](https://www.kaggle.com/datasets/balabaskar/count-coins-image-dataset) from Kaggle. 
+In addition, the project focuses on a computer vision task—specifically, counting the number of coins in images. The dataset used is the [Count Coins Image dataset](https://www.kaggle.com/datasets/balabaskar/count-coins-image-dataset) available on Kaggle.  
 
-In particular the task is solved in two different way.
+The task is approached using two distinct methods:  
 
-- **Model based approach**: A classic computer vision algorithm is developed using skimage library.
+- **Model-Based Approach**: A traditional computer vision algorithm is implemented utilizing the `skimage` library.  
+- **Data-Driven Approach**: Deep learning techniques are applied by training a Convolutional Neural Network (CNN) with the PyTorch library.  
 
-- **Data driven approach**: Deep learning methods are used, in particular a Convolutional Neural Network is trained using PyTorch library.
+
 
 ## Get started
 
