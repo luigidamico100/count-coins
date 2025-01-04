@@ -21,12 +21,12 @@ The task is approached using two distinct methods:
 Download the dataset from [kaggle](https://www.kaggle.com/datasets/balabaskar/count-coins-image-dataset) and extract the content in the folder  `/data/`. The data folder should be structured like this:
 
 ```
-├── data
+└── data
     ├── coins_count_values.csv
-    ├── coins_images
+    └── coins_images
         ├── all_coins
         ├── china_coins
-        ├── ...
+        └── ...
 
 ```
 
@@ -75,15 +75,15 @@ The notebooks are:
     │
     ├── visualization.py        <- Visualization functions
     │
-    ├── data                    <- functions to deal with data
+    ├── data                    <- Functions to deal with data
     │   │
     │   ├── IO.py               <- Input/Output functions
-    │   ├── dataset.py          <- dataset functionalities for pytorch
-    │   ├── preprocess.py       <- preprocessing functionalities
+    │   ├── dataset.py          <- Dataset functionalities for pytorch
+    │   ├── preprocess.py       <- Preprocessing functionalities
     │
-    └── modelling               <- functions for the models
+    └── modelling               <- Functions for the models
         │
-        ├── classical_cv.py     <- classical computer vision algorithm functions
+        ├── classical_cv.py     <- Classical computer vision algorithm functions
         ├── deep_learning.py    <- Functions for the deep learning model
         └── evaluating.py       <- Functions for evaluating generic models
 
