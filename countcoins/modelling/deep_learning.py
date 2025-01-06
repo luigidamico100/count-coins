@@ -167,7 +167,11 @@ class TrainedDeepLearningModel():
 
         self.transform = get_transforms(image_size=params['image_size'], mode='inference')
 
-    def predict(self, image_path):
+    def predict(self, image_path, generate_plots=False):
+        """
+        generate_plots is a useless params:
+        it is inserted for compatibility with the ClassicalCVModel.predict method
+        """
         image = read_image(image_path, as_gray=True, as_PIL=True, plot_image=False,)  # shape: (H, W)
         image = self.transform(image)
         image = image.unsqueeze(0)  # torch.Size([1, 1, H, W])

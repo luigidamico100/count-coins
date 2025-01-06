@@ -1,6 +1,6 @@
 # Count coins project
 
-This is a little project made for Aulab class.
+This is a little project made for Aulab class. The models developed in this project are not optimized and they may perform poorly. The aims of the project are others. 
 
 
 # Description  
@@ -51,7 +51,7 @@ You can perform the main things through the notebooks, since they are a very hig
 The notebooks are:
 
 - `EDA.ipynb`: Simple data exploration
-- `predict_classical_cv.ipynb`: Perform a single prediction using the developed classical computer vision model. 
+- `single_prediction.ipynb`: Perform a single prediction using the classical CV model or the deep learning model. 
 - `train_deeplearning.ipynb`: Perform the training of a deep learning model and save the experiment in the folder `/models/`.
 - `evaluate.ipynb`: Evaluate a model (both the classical and the deep learning one) over all the dataset and finally shows the resulting metrics.
 
@@ -86,7 +86,4 @@ The notebooks are:
         ├── classical_cv.py     <- Classical computer vision algorithm functions
         ├── deep_learning.py    <- Functions for the deep learning model
         └── evaluating.py       <- Functions for evaluating generic models
-
-        
-
 ```
